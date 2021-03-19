@@ -53,6 +53,16 @@ namespace ChappellEberleAstorga_Assign5
             Initialize();
         }
 
+        /* -------------------------------------------------------------------------------
+        * Function:   private void clearGraph(object sender, EventArgs e)
+        * 
+        * Use: sets up the text box for the game
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
+        private void clearGraph(object sender, EventArgs e)
         private void Initialize()
         {
             textBoxArray = new TextBox[81] { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9, textBox10,
@@ -70,7 +80,16 @@ namespace ChappellEberleAstorga_Assign5
             }
 
         }
-
+        
+        /* -------------------------------------------------------------------------------
+        * Function:  private void Easy_Click(object sender, EventArgs e)
+        * 
+        * Use:  asks user if they would like to save the progress in thier game in easy mode
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: txt message
+        * -------------------------------------------------------------------------------*/
         private void Easy_Click(object sender, EventArgs e)
         {
             bool result = false;
@@ -90,7 +109,16 @@ namespace ChappellEberleAstorga_Assign5
             EnableButtons();
             EnableButtons();
         }
-
+        
+        /* -------------------------------------------------------------------------------
+        * Function:  private void Medium_Click(object sender, EventArgs e)
+        * 
+        * Use: asks user if they would like to save the progress in thier game in meduim mode
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: text message
+        * -------------------------------------------------------------------------------*/
         private void Medium_Click(object sender, EventArgs e)
         {
             bool result = false;
@@ -110,6 +138,15 @@ namespace ChappellEberleAstorga_Assign5
             EnableButtons();
         }
 
+        /* -------------------------------------------------------------------------------
+        * Function:  private void Hard_Click(object sender, EventArgs e)
+        * 
+        * Use: asks user if they would like to save the progress in thier game in hard mode
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: text message
+        * -------------------------------------------------------------------------------*/
         private void Hard_Click(object sender, EventArgs e)
         {
             bool result = false;
@@ -129,6 +166,15 @@ namespace ChappellEberleAstorga_Assign5
             EnableButtons();
         }
 
+        /* -------------------------------------------------------------------------------
+        * Function: 
+        * 
+        * Use: 
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
         private void TextBox_Focus(object sender, EventArgs e)
         {
             textBoxArray[lastClickedBox].BackColor = Color.White;
@@ -136,7 +182,16 @@ namespace ChappellEberleAstorga_Assign5
             textBoxArray[lastClickedBox].BackColor = Color.LightYellow;
             focusLabel.Focus();
         }
-
+        
+        /* -------------------------------------------------------------------------------
+        * Function: private void Help_Click(object sender, EventArgs e)
+        * 
+        * Use: used to help the user when the user is stuck on the puzzel
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
         private void Help_Click(object sender, EventArgs e)
         {
             if (!indexOfAllZeros.Any())
@@ -161,6 +216,15 @@ namespace ChappellEberleAstorga_Assign5
                 checkCompletion();
         }
 
+        /* -------------------------------------------------------------------------------
+        * Function: private void CheckAnswers_Click(object sender, EventArgs e)
+        * 
+        * Use: used to check if the answers are correct
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: text message
+        * -------------------------------------------------------------------------------*/
         private void CheckAnswers_Click(object sender, EventArgs e)
         {
             List<Tuple<int, int, char>> rowComp = new List<Tuple<int, int, char>>();
@@ -250,6 +314,15 @@ namespace ChappellEberleAstorga_Assign5
                 richTextBox1.Text = "Everything looks good!";
         }
 
+        /* -------------------------------------------------------------------------------
+        * Function:  private void Pause_Click(object sender, EventArgs e)
+        * 
+        * Use: used to pause the game
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: bool
+        * -------------------------------------------------------------------------------*/
         private void Pause_Click(object sender, EventArgs e)
         {
             if (Pause.Text == "Pause")
@@ -270,6 +343,15 @@ namespace ChappellEberleAstorga_Assign5
             }
         }
 
+       /* -------------------------------------------------------------------------------
+        * Function:   private void Reset_Click(object sender, EventArgs e)
+        * 
+        * Use: used to reset the game
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: bool
+        * -------------------------------------------------------------------------------*/
         private void Reset_Click(object sender, EventArgs e)
         {
             indexOfAllZeros.Clear();
@@ -292,6 +374,15 @@ namespace ChappellEberleAstorga_Assign5
             t = TimeSpan.FromSeconds(0);
         }
 
+        /* -------------------------------------------------------------------------------
+        * Function:   private void timer1_Tick(object sender, EventArgs e)
+        *   
+        * Use: used to keep track of time in game
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: text message
+        * -------------------------------------------------------------------------------*/
         private void timer1_Tick(object sender, EventArgs e)
         {
 
@@ -299,6 +390,15 @@ namespace ChappellEberleAstorga_Assign5
             timerLabel.Text = "Time elapsed " + string.Format("{0:D2}h:{1:D2}m:{2:D2}s", t.Hours, t.Minutes, t.Seconds);
         }
 
+        /* -------------------------------------------------------------------------------
+        * Function: public void getPuzzleAtDifficulty(string difficulty)
+        * 
+        * Use: used to choose the diffuculity of the game
+        *        
+        * Parameters: string difficulty
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
         public void getPuzzleAtDifficulty(string difficulty)
         {
             bool result = false;
@@ -372,7 +472,16 @@ namespace ChappellEberleAstorga_Assign5
             t = TimeSpan.FromSeconds(startTime);
         }
 
-
+     
+        /* -------------------------------------------------------------------------------
+        * Function: 
+        *  private void PopulateGrid()
+        * Use: 
+        *        
+        * Parameters: n/a
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
         private void PopulateGrid()
         {
             for (int offset = 0; offset < 9; offset++)
@@ -401,6 +510,15 @@ namespace ChappellEberleAstorga_Assign5
         }
 
 
+        /* -------------------------------------------------------------------------------
+        * Function: private void Form1_KeyDown(object sender, KeyEventArgs e)
+        * 
+        * Use: 
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (originalFilePath == null)
@@ -438,6 +556,15 @@ namespace ChappellEberleAstorga_Assign5
             richTextBox1.Text = "";
         }
 
+        /* -------------------------------------------------------------------------------
+        * Function:  private void checkCompletion()
+        * 
+        * Use: check if you completed the puzzel
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
         private void checkCompletion()
         {
             bool iscomplete = true;
@@ -500,7 +627,15 @@ namespace ChappellEberleAstorga_Assign5
         }
 
         
-
+        /* -------------------------------------------------------------------------------
+        * Function: private void SaveProgress()
+        * 
+        * Use: used to save the progress in game
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
         private void SaveProgress()
         {
             string pathHolder = originalFilePath.Replace(".txt",".sav");
@@ -520,6 +655,15 @@ namespace ChappellEberleAstorga_Assign5
             File.WriteAllText(pathHolder, fullSaveString);
         }
 
+        /* -------------------------------------------------------------------------------
+        * Function:   private void EnableButtons()
+        * 
+        * Use: 
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: bool
+        * -------------------------------------------------------------------------------*/
         private void EnableButtons()
         {
             Help.Enabled = true;
@@ -528,6 +672,15 @@ namespace ChappellEberleAstorga_Assign5
             Reset.Enabled = true;
         }
 
+        /* -------------------------------------------------------------------------------
+        * Function:   private void DisableButtons()
+        * 
+        * Use: 
+        *        
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: bool
+        * -------------------------------------------------------------------------------*/
         private void DisableButtons()
         {
             Help.Enabled = false;
