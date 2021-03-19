@@ -474,9 +474,9 @@ namespace ChappellEberleAstorga_Assign5
 
      
         /* -------------------------------------------------------------------------------
-        * Function: 
-        *  private void PopulateGrid()
-        * Use: 
+        * Function:   private void PopulateGrid()
+        *
+        * Use: used to populate the grid in the game
         *        
         * Parameters: n/a
         * 
@@ -559,7 +559,7 @@ namespace ChappellEberleAstorga_Assign5
         /* -------------------------------------------------------------------------------
         * Function:  private void checkCompletion()
         * 
-        * Use: check if you completed the puzzel
+        * Use: check if you completed the puzzel and then saves time in a times file
         *        
         * Parameters: object sender, EventArgs e
         * 
@@ -571,26 +571,29 @@ namespace ChappellEberleAstorga_Assign5
             for (int i = 0; (i < 9) && iscomplete; i++)
                 for (int j = 0; (j < 9) && iscomplete; j++)
                     iscomplete = currentPuzzle[i][j] == finishedPuzzle[i][j];
-
+            //checks if the puzzle is completed corectly 
             if (!iscomplete)
             {
                 richTextBox1.Text = "You've yet to complete the puzzle correctly";
             }
             else
             {
+                //eles stop and save
                 timer1.Stop();
                 if (originalFilePath.Contains(".sav"))
                     File.Delete(originalFilePath);
-
+                //if not cheated
                 if (!cheated)
                     using (StreamWriter sw = File.AppendText("../../puzzles/" + selectedDifficulty + "/times.txt"))
                         sw.WriteLine(t.TotalSeconds);
 
+                //shows you time and saves it with the data for average and fastest time
                 string yourTime = "Your time\n";
                 yourTime += string.Format("{0:D2}h:{1:D2}m:{2:D2}s", t.Hours, t.Minutes, t.Seconds) + "\n";
                 string fastestComp = "Fastest Completion\n";
                 string avgComp = "Average Completion\n";
                 List<double> times = new List<double>();
+                //makes a file for time if there is not one made 
                 if (File.Exists("../../puzzles/" + selectedDifficulty + "/times.txt"))
                 {
                     using (StreamReader inFile = new StreamReader("../../puzzles/" + selectedDifficulty + "/times.txt"))
@@ -621,7 +624,8 @@ namespace ChappellEberleAstorga_Assign5
                 DisableButtons();
                 for (int i = 0; i < 81; i++)
                     textBoxArray[i].Enabled = false;
-
+                   
+                //shows the fastest and avergae time for the puzzel
                 MessageBox.Show(yourTime + fastestComp + avgComp, "Times for all " + selectedDifficulty + " Puzzles");
             }
         }
@@ -638,6 +642,7 @@ namespace ChappellEberleAstorga_Assign5
         * -------------------------------------------------------------------------------*/
         private void SaveProgress()
         {
+            //saves path of time
             string pathHolder = originalFilePath.Replace(".txt",".sav");
             string fullSaveString = "";
             for (int i = 0; i < 9; i++)
@@ -658,7 +663,7 @@ namespace ChappellEberleAstorga_Assign5
         /* -------------------------------------------------------------------------------
         * Function:   private void EnableButtons()
         * 
-        * Use: 
+        * Use: used to enable buttons
         *        
         * Parameters: object sender, EventArgs e
         * 
@@ -675,7 +680,7 @@ namespace ChappellEberleAstorga_Assign5
         /* -------------------------------------------------------------------------------
         * Function:   private void DisableButtons()
         * 
-        * Use: 
+        * Use: used to disable buttons
         *        
         * Parameters: object sender, EventArgs e
         * 
